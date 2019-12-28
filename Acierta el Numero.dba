@@ -1,0 +1,34 @@
+REM Proyecto: Acierta el Numero
+REM Creado: 14/02/2016 21:07:02
+REM
+REM ***** Archivo de Código Fuente Principal *****
+REM
+global numero as integer
+global respuesta as integer
+global tiradas as integer
+global aciertos as integer
+global fallos as integer
+global exito as integer
+global dim respuestas(1000)
+
+
+
+
+
+
+
+cargatitulo()
+calcularnumero()
+pantallainicio()
+
+repeat
+preguntar()
+respuesta()
+apuntarrespuesta()
+text 50,500, "Pulsa una tecla"
+wait key
+borrarrespuesta()
+tiradas = tiradas + 1
+until exito = 1
+wait key
+end

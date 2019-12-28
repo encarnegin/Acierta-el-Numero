@@ -1,0 +1,63 @@
+REM *** Archivo Incluido: funciones.dba ***
+REM Creado: 14/02/2016 21:28:32
+REM
+REM Incluido en el proyecto: C:\Program Files (x86)\The Game Creators\Dark Basic Professional\Projects\Acierta el Numero\Acierta el Numero.dbpro
+REM
+
+function cargatitulo()
+load bitmap "portada.jpg",0
+load music "duke.mid",1
+loop music 1
+wait key
+stop music 1
+endfunction
+
+function pantallainicio()
+load bitmap "fondo1.jpg",0
+set text font "Calibri"
+set text size 70
+exito = 0
+tiradas = 1
+endfunction
+
+function calcularnumero()
+numero=abs(rnd(100))
+endfunction
+
+function preguntar()
+set cursor 700,250
+input respuesta
+endfunction
+
+function respuesta()
+
+if respuesta = numero then exito = 1
+if respuesta > numero
+text 50,400,"El numero es menor"
+endif
+if respuesta < numero
+text 50,400,"El numero es mayor"
+endif
+endfunction
+
+function apuntarrespuesta()
+respuestas(tiradas)=respuesta
+for x=1 to tiradas
+set cursor 1000,250+(65*x)
+if respuestas(tiradas) > numero then simbolo$=">"
+if respuestas(tiradas) < numero then simbolo$="<"
+if respuestas(tiradas) = numero then simbolo$="="
+print x;" - ";respuestas(x);" ";simbolo$
+next x
+endfunction
+
+function borrarrespuesta()
+set text opaque
+text 700,250,"            "
+text 50,400,"                                                               "
+text 50,500,"                                                               "
+endfunction
+
+
+
+
